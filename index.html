@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basan | Engineering Portfolio</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 40px; }
+        .container { max-width: 1000px; margin: auto; }
+        header { border-bottom: 1px solid #30363d; padding-bottom: 20px; margin-bottom: 40px; }
+        h1 { color: #58a6ff; margin: 0; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 15px; transition: 0.3s; }
+        .card:hover { border-color: #58a6ff; transform: translateY(-5px); }
+        .card img { width: 100%; border-radius: 4px; height: 200px; object-fit: cover; background: #000; }
+        .card h3 { margin: 15px 0 10px 0; color: #f0f6fc; }
+        .card p { font-size: 14px; color: #8b949e; line-height: 1.5; }
+        .tags { margin-top: 10px; }
+        .tag { font-size: 11px; background: #21262d; padding: 4px 8px; border-radius: 10px; margin-right: 5px; border: 1px solid #30363d; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Basan Ali Aziz</h1>
+            <p>Mechatronics & Electromobility | Engineering Portfolio</p>
+        </header>
+
+        <div class="grid">
+            <div class="card">
+                <img src="plotting-demo.gif" alt="Pen Plotter">
+                <h3>CNC Pen Plotter</h3>
+                <p>Custom built pen plotter using DrawingBotV3. Focused on high-precision generative art and SolidWorks design.</p>
+                <div class="tags"><span class="tag">Mechatronics</span><span class="tag">SolidWorks</span></div>
+            </div>
+
+            <div class="card">
+                <img src="mazda-turbo.gif" alt="Mazda 3 Turbo">
+                <h3>Mazda 3 Turbo Diagnostics</h3>
+                <p>Electronics and battery management systems for the 2021 Mazda 3 platform.</p>
+                <div class="tags"><span class="tag">Electronics</span><span class="tag">Automotive</span></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
