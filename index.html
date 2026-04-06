@@ -48,7 +48,6 @@
             z-index: 1;
         }
 
-        /* ── Header ── */
         header {
             margin-bottom: 80px;
             animation: fadeUp 0.7s ease both;
@@ -81,7 +80,6 @@
             letter-spacing: 0.05em;
         }
 
-        /* ── Section ── */
         .project-section {
             margin-bottom: 80px;
             animation: fadeUp 0.7s ease both;
@@ -120,7 +118,6 @@
             margin-left: auto;
         }
 
-        /* ── Gallery Grid ── */
         .cnc-grid {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
@@ -145,6 +142,7 @@
         .media-item.wide     { grid-column: span 7; }
         .media-item.standard { grid-column: span 5; }
         .media-item.third    { grid-column: span 4; }
+        .media-item.half     { grid-column: span 6; }
 
         .media-item img {
             width: 100%;
@@ -172,7 +170,6 @@
             letter-spacing: 0.1em;
         }
 
-        /* ── Project description strip ── */
         .project-desc {
             margin-top: 16px;
             padding: 16px 20px;
@@ -204,7 +201,6 @@
             color: var(--text);
         }
 
-        /* ── Lightbox ── */
         .lightbox {
             display: none;
             position: fixed;
@@ -256,7 +252,7 @@
         @media (max-width: 700px) {
             .cnc-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 160px; }
             .media-item.hero, .media-item.tall, .media-item.wide,
-            .media-item.standard, .media-item.third { grid-column: span 2; grid-row: span 1; }
+            .media-item.standard, .media-item.third, .media-item.half { grid-column: span 2; grid-row: span 1; }
             .project-desc { gap: 16px; }
         }
     </style>
@@ -280,25 +276,21 @@
 
         <div class="cnc-grid">
 
-            <!-- hero: 7 cols × 2 rows -->
             <div class="media-item hero" onclick="openLightbox('Eren Gif.gif')">
                 <img src="Eren Gif.gif" alt="Plotter drawing Eren">
                 <div class="media-overlay"><span class="media-label">Eren — in progress</span></div>
             </div>
 
-            <!-- tall: 5 cols × 2 rows — fills right column of rows 1+2 -->
             <div class="media-item tall" onclick="openLightbox('Solidworks gif.gif')">
                 <img src="Solidworks gif.gif" alt="SolidWorks model">
                 <div class="media-overlay"><span class="media-label">SolidWorks model</span></div>
             </div>
 
-            <!-- wide: 7 cols × 1 row — sits below hero -->
             <div class="media-item wide" onclick="openLightbox('Eren.png')">
                 <img src="Eren.png" alt="Eren final plot">
                 <div class="media-overlay"><span class="media-label">Eren — final output</span></div>
             </div>
 
-            <!-- Row 3: three thirds = 4+4+4 = 12 cols -->
             <div class="media-item third" onclick="openLightbox('Calibration.png')">
                 <img src="Calibration.png" alt="Calibration">
                 <div class="media-overlay"><span class="media-label">Calibration test</span></div>
@@ -354,22 +346,26 @@
 
         <div class="cnc-grid">
 
-            <!-- hero: 7 cols × 2 rows -->
+            <!-- Row 1+2: hero gif (7×2) + Lamp 2 tall (5×2) -->
             <div class="media-item hero" onclick="openLightbox('Lamp1GIF.gif')">
                 <img src="Lamp1GIF.gif" alt="Lithophane lamp color modes">
                 <div class="media-overlay"><span class="media-label">Color modes — live</span></div>
             </div>
 
-            <!-- tall: 5 cols × 2 rows — right column -->
             <div class="media-item tall" onclick="openLightbox('Lamp 2.jpg')">
                 <img src="Lamp 2.jpg" alt="Lithophane lamp detail">
                 <div class="media-overlay"><span class="media-label">Detail shot</span></div>
             </div>
 
-            <!-- wide: 7 cols × 1 row — below hero, left side -->
+            <!-- Row 2 bottom: Lamp.jpg (7) + LampSW.png (5) = 12 -->
             <div class="media-item wide" onclick="openLightbox('Lamp.jpg')">
                 <img src="Lamp.jpg" alt="Lithophane lamp final build">
                 <div class="media-overlay"><span class="media-label">Final build</span></div>
+            </div>
+
+            <div class="media-item standard" onclick="openLightbox('LampSW.png')">
+                <img src="LampSW.png" alt="SolidWorks design">
+                <div class="media-overlay"><span class="media-label">SolidWorks design</span></div>
             </div>
 
         </div>
