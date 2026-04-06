@@ -388,13 +388,52 @@
         <div class="section-header">
             <span class="section-number">02 //</span>
             <h2>Lithophane Lamp</h2>
-            <span class="section-meta">Coming soon</span>
+            <span class="section-meta">3D Print · Electronics · FastLED</span>
         </div>
 
-        <div class="empty-state">
-            <div class="empty-icon">🔆</div>
-            <h3>Documentation in progress</h3>
-            <p>Photos and build notes will be added soon.</p>
+        <div class="cnc-grid">
+
+            <!-- Hero: GIF cycling through modes -->
+            <div class="media-item hero" onclick="openLightbox('Lamp1GIF.gif', 'gif')">
+                <img src="Lamp1GIF.gif" alt="Lithophane lamp color modes">
+                <div class="media-overlay"><span class="media-label">Color modes — live</span></div>
+            </div>
+
+            <!-- Tall: static beauty shot -->
+            <div class="media-item tall" onclick="openLightbox('Lamp 2.jpg', 'img')">
+                <img src="Lamp 2.jpg" alt="Lithophane lamp detail">
+                <div class="media-overlay"><span class="media-label">Detail shot</span></div>
+            </div>
+
+            <!-- Wide: full lamp photo -->
+            <div class="media-item wide" onclick="openLightbox('Lamp.jpg', 'img')">
+                <img src="Lamp.jpg" alt="Lithophane lamp">
+                <div class="media-overlay"><span class="media-label">Final build</span></div>
+            </div>
+
+        </div>
+
+        <div class="project-desc">
+            <div class="desc-item">
+                <span class="desc-label">Power</span>
+                <span class="desc-value">18650 · TP4056 · XL6009E1</span>
+            </div>
+            <div class="desc-item">
+                <span class="desc-label">LEDs</span>
+                <span class="desc-value">WS2812 Ring · FastLED</span>
+            </div>
+            <div class="desc-item">
+                <span class="desc-label">Controller</span>
+                <span class="desc-value">Arduino Nano</span>
+            </div>
+            <div class="desc-item">
+                <span class="desc-label">Modes</span>
+                <span class="desc-value">8 color modes · potentiometer brightness</span>
+            </div>
+            <div class="desc-item">
+                <span class="desc-label">Shell</span>
+                <span class="desc-value">FDM 3D printed enclosure</span>
+            </div>
         </div>
     </section>
 
