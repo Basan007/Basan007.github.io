@@ -27,7 +27,6 @@
             overflow-x: hidden;
         }
 
-        /* Subtle grid background */
         body::before {
             content: '';
             position: fixed;
@@ -73,9 +72,7 @@
             margin-bottom: 10px;
         }
 
-        header h1 span {
-            color: var(--accent);
-        }
+        header h1 span { color: var(--accent); }
 
         header p {
             font-family: 'Space Mono', monospace;
@@ -123,7 +120,7 @@
             margin-left: auto;
         }
 
-        /* ── CNC Gallery Grid ── */
+        /* ── Gallery Grid ── */
         .cnc-grid {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
@@ -140,24 +137,16 @@
             cursor: pointer;
         }
 
-        .media-item:hover .media-overlay {
-            opacity: 1;
-        }
+        .media-item:hover .media-overlay { opacity: 1; }
+        .media-item:hover img { transform: scale(1.04); }
 
-        .media-item:hover img,
-        .media-item:hover video {
-            transform: scale(1.04);
-        }
+        .media-item.hero     { grid-column: span 7; grid-row: span 2; }
+        .media-item.tall     { grid-column: span 5; grid-row: span 2; }
+        .media-item.wide     { grid-column: span 7; }
+        .media-item.standard { grid-column: span 5; }
+        .media-item.third    { grid-column: span 4; }
 
-        /* Layout: hero left, stack right */
-        .media-item.hero      { grid-column: span 7; grid-row: span 2; }
-        .media-item.tall      { grid-column: span 5; grid-row: span 2; }
-        .media-item.wide      { grid-column: span 7; }
-        .media-item.standard  { grid-column: span 5; }
-        .media-item.third     { grid-column: span 4; }
-
-        .media-item img,
-        .media-item video {
+        .media-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -181,35 +170,6 @@
             font-size: 11px;
             color: var(--accent);
             letter-spacing: 0.1em;
-        }
-
-        /* ── Empty state ── */
-        .empty-state {
-            border: 1px dashed var(--border);
-            border-radius: 8px;
-            padding: 60px 40px;
-            text-align: center;
-            background: var(--surface);
-        }
-
-        .empty-icon {
-            font-size: 2rem;
-            margin-bottom: 16px;
-            opacity: 0.4;
-        }
-
-        .empty-state h3 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--muted);
-            margin-bottom: 8px;
-        }
-
-        .empty-state p {
-            font-family: 'Space Mono', monospace;
-            font-size: 11px;
-            color: var(--muted);
-            opacity: 0.6;
         }
 
         /* ── Project description strip ── */
@@ -264,8 +224,7 @@
             position: relative;
         }
 
-        .lightbox-inner img,
-        .lightbox-inner video {
+        .lightbox-inner img {
             max-width: 90vw;
             max-height: 85vh;
             border-radius: 8px;
@@ -289,13 +248,11 @@
 
         .lightbox-close:hover { border-color: var(--accent); color: var(--accent); }
 
-        /* ── Animations ── */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(24px); }
             to   { opacity: 1; transform: translateY(0); }
         }
 
-        /* ── Responsive ── */
         @media (max-width: 700px) {
             .cnc-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 160px; }
             .media-item.hero, .media-item.tall, .media-item.wide,
@@ -323,36 +280,36 @@
 
         <div class="cnc-grid">
 
-            <!-- Hero: animated plot gif -->
-            <div class="media-item hero" onclick="openLightbox('Eren Gif.gif', 'gif')">
+            <!-- hero: 7 cols × 2 rows -->
+            <div class="media-item hero" onclick="openLightbox('Eren Gif.gif')">
                 <img src="Eren Gif.gif" alt="Plotter drawing Eren">
                 <div class="media-overlay"><span class="media-label">Eren — in progress</span></div>
             </div>
 
-            <!-- Tall: Solidworks model gif -->
-            <div class="media-item tall" onclick="openLightbox('Solidworks gif.gif', 'gif')">
+            <!-- tall: 5 cols × 2 rows — fills right column of rows 1+2 -->
+            <div class="media-item tall" onclick="openLightbox('Solidworks gif.gif')">
                 <img src="Solidworks gif.gif" alt="SolidWorks model">
                 <div class="media-overlay"><span class="media-label">SolidWorks model</span></div>
             </div>
 
-            <!-- Row 2 -->
-            <div class="media-item wide" onclick="openLightbox('Eren.png', 'img')">
+            <!-- wide: 7 cols × 1 row — sits below hero -->
+            <div class="media-item wide" onclick="openLightbox('Eren.png')">
                 <img src="Eren.png" alt="Eren final plot">
                 <div class="media-overlay"><span class="media-label">Eren — final output</span></div>
             </div>
 
-            <!-- Row 3: three equal -->
-            <div class="media-item third" onclick="openLightbox('Calibration.png', 'img')">
+            <!-- Row 3: three thirds = 4+4+4 = 12 cols -->
+            <div class="media-item third" onclick="openLightbox('Calibration.png')">
                 <img src="Calibration.png" alt="Calibration">
                 <div class="media-overlay"><span class="media-label">Calibration test</span></div>
             </div>
 
-            <div class="media-item third" onclick="openLightbox('Kratos.png', 'img')">
+            <div class="media-item third" onclick="openLightbox('Kratos.png')">
                 <img src="Kratos.png" alt="Kratos plot">
                 <div class="media-overlay"><span class="media-label">Kratos</span></div>
             </div>
 
-            <div class="media-item third" onclick="openLightbox('Text gif.gif', 'gif')">
+            <div class="media-item third" onclick="openLightbox('Text gif.gif')">
                 <img src="Text gif.gif" alt="Text plotting">
                 <div class="media-overlay"><span class="media-label">Text plotting</span></div>
             </div>
@@ -397,26 +354,51 @@
 
         <div class="cnc-grid">
 
-            <div class="media-item hero" onclick="openLightbox('Lamp1GIF.gif', 'gif')">
+            <!-- hero: 7 cols × 2 rows -->
+            <div class="media-item hero" onclick="openLightbox('Lamp1GIF.gif')">
                 <img src="Lamp1GIF.gif" alt="Lithophane lamp color modes">
                 <div class="media-overlay"><span class="media-label">Color modes — live</span></div>
             </div>
 
-            <div class="media-item tall" onclick="openLightbox('Lamp 2.jpg', 'img')">
+            <!-- tall: 5 cols × 2 rows — right column -->
+            <div class="media-item tall" onclick="openLightbox('Lamp 2.jpg')">
                 <img src="Lamp 2.jpg" alt="Lithophane lamp detail">
                 <div class="media-overlay"><span class="media-label">Detail shot</span></div>
             </div>
 
-            <div class="media-item wide" onclick="openLightbox('Lamp.jpg', 'img')">
-                <img src="Lamp.jpg" alt="Lithophane lamp">
+            <!-- wide: 7 cols × 1 row — below hero, left side -->
+            <div class="media-item wide" onclick="openLightbox('Lamp.jpg')">
+                <img src="Lamp.jpg" alt="Lithophane lamp final build">
                 <div class="media-overlay"><span class="media-label">Final build</span></div>
             </div>
 
-            <div class="media-item standard" onclick="openLightbox('LampSW.png', 'img')">
-                <img src="LampSW.png" alt="Lithophane lamp">
-                <div class="media-overlay"><span class="media-label">Solidworks Design</span></div>
-            </div>
+        </div>
 
+        <div class="project-desc">
+            <div class="desc-item">
+                <span class="desc-label">Power</span>
+                <span class="desc-value">18650 · TP4056 · XL6009E1</span>
+            </div>
+            <div class="desc-item">
+                <span class="desc-label">LEDs</span>
+                <span class="desc-value">WS2812 Ring · FastLED</span>
+            </div>
+            <div class="desc-item">
+                <span class="desc-label">Controller</span>
+                <span class="desc-value">Arduino Nano</span>
+            </div>
+            <div class="desc-item">
+                <span class="desc-label">Modes</span>
+                <span class="desc-value">8 color modes · potentiometer brightness</span>
+            </div>
+            <div class="desc-item">
+                <span class="desc-label">Design</span>
+                <span class="desc-value">SolidWorks</span>
+            </div>
+            <div class="desc-item">
+                <span class="desc-label">Shell</span>
+                <span class="desc-value">FDM 3D printed · PLA</span>
+            </div>
         </div>
     </section>
 
@@ -429,12 +411,10 @@
 </div>
 
 <script>
-    function openLightbox(src, type) {
+    function openLightbox(src) {
         const lb = document.getElementById('lightbox');
         const inner = document.getElementById('lightbox-inner');
-        inner.innerHTML = type === 'gif'
-            ? `<img src="${src}" alt="">`
-            : `<img src="${src}" alt="">`;
+        inner.innerHTML = `<img src="${src}" alt="">`;
         lb.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
