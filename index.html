@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basan | Engineering Portfolio</title>
+    <title>CNC Plotter Projects | Basan</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 40px; }
         .container { max-width: 1000px; margin: auto; }
         header { border-bottom: 1px solid #30363d; padding-bottom: 20px; margin-bottom: 40px; }
-        h1 { color: #58a6ff; margin: 0; }
+        h1 { color: #58a6ff; margin: 0 0 10px 0; }
+        .back-link { color: #8b949e; text-decoration: none; font-size: 14px; display: inline-block; margin-bottom: 20px; transition: color 0.2s;}
+        .back-link:hover { color: #58a6ff; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 15px; transition: 0.3s; }
         .card:hover { border-color: #58a6ff; transform: translateY(-5px); }
@@ -21,13 +23,15 @@
 </head>
 <body>
     <div class="container">
+        
+        <a href="index.html" class="back-link">← Back to Categories</a>
+        
         <header>
-            <h1>Basan Ali Aziz</h1>
-            <p>Mechatronics & Electromobility | Engineering Portfolio</p>
+            <h1>CNC Pen Plotter</h1>
+            <p>Generative art, hardware assembly, and custom G-code generation.</p>
         </header>
 
         <div class="grid">
-            
             <div class="card">
                 <img src="Solidworks gif.gif" alt="SolidWorks Design">
                 <h3>SolidWorks Modeling</h3>
@@ -48,7 +52,6 @@
                 <p>High-precision typography and text plotting utilizing custom-generated G-code.</p>
                 <div class="tags"><span class="tag">G-Code</span><span class="tag">Hardware</span></div>
             </div>
-
         </div>
     </div>
 </body>
