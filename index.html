@@ -7,20 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Light Theme (Default) */
-            --bg: #f0f4f8;
-            --surface: #ffffff;
-            --surface2: #e8edf5;
-            --border: #c8d3e8;
-            --accent: #2a4a8a;
-            --accent-light: #4a6fba;
-            --accent-pale: #dce6f5;
-            --text: #1a2a4a;
-            --muted: #7a8fab;
-        }
-
-        [data-theme="dark"] {
-            /* Dark Theme */
+            /* Dark Theme (Default) */
             --bg: #18181c;
             --surface: #111318;
             --surface2: #1a1d24;
@@ -30,6 +17,19 @@
             --accent-pale: #1c222e;
             --text: #d4dbe8;
             --muted: #5a6070;
+        }
+
+        [data-theme="light"] {
+            /* Light Theme */
+            --bg: #f0f4f8;
+            --surface: #ffffff;
+            --surface2: #e8edf5;
+            --border: #c8d3e8;
+            --accent: #2a4a8a;
+            --accent-light: #4a6fba;
+            --accent-pale: #dce6f5;
+            --text: #1a2a4a;
+            --muted: #7a8fab;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -105,11 +105,13 @@
             color: var(--accent-light);
         }
 
-        .sun-icon { display: none; }
-        .moon-icon { display: block; }
+        /* Default is Dark, so show Sun icon to switch to light */
+        .sun-icon { display: block; }
+        .moon-icon { display: none; }
         
-        [data-theme="dark"] .sun-icon { display: block; }
-        [data-theme="dark"] .moon-icon { display: none; }
+        /* When Light theme is active, show Moon icon */
+        [data-theme="light"] .sun-icon { display: none; }
+        [data-theme="light"] .moon-icon { display: block; }
 
         header h1 {
             font-size: clamp(2.4rem, 5vw, 3.6rem);
@@ -568,9 +570,9 @@
             <span class="section-meta">Material Science</span>
         </div>
         <div class="project-about">
-            <p>For my experimental materials project, I used bismuth that I sourced from a professor. Because bismuth expands as it cools from a melt, it forms distinctive stepped crystals with an iridescent oxide layer. My goal was to shape these crystals into a matching jewelry set consisting of a necklace pendant and earrings. 
+            <p>For my experimental materials project, I used bismuth that I sourced from a professor. Because bismuth expands as it cools from a melt, it forms distinctive stepped crystals with an iridescent oxide layer. My goal was to shape these crystals into a matching jewelry set—a necklace pendant and earrings. 
 
-            The main challenges I faced were the material's brittleness, controlling the crystal size through my pour timing, and managing thermal shock on the receiving vessel during the melt transfer (I actually had one pot crack on me and had to replace it with a more heat-resistant option). Once I achieved the right crystal sizes, I refined the pieces using sandpaper, working my way from 200 up to 2000 grit. Finally, to preserve the iridescent color—which is a thin oxidation layer vulnerable to further air exposure. I sealed the crystals with UV nail polish. While this slightly dulled some of the color by interfering with the light reflections, my overall result was a wearable, one of a kind set.</p>
+            The main challenges I faced were the material's brittleness, controlling the crystal size through my pour timing, and managing thermal shock on the receiving vessel during the melt transfer (I actually had one pot crack on me and had to replace it with a more heat-resistant option). Once I achieved the right crystal sizes, I refined the pieces using sandpaper, working my way from 200 up to 2000 grit. Finally, to preserve the iridescent color—which is a thin oxidation layer vulnerable to further air exposure—I sealed the crystals with UV nail polish. While this slightly dulled some of the color by interfering with the light reflections, my overall result was a wearable, one-of-a-kind set.</p>
         </div>
         <div class="cnc-grid">
             <div class="media-item hero" onclick="openLightbox('B1.jpg')">
@@ -637,18 +639,18 @@
     const currentTheme = localStorage.getItem('theme');
     
     // Check if the user previously saved a theme preference
-    if (currentTheme) {
-        document.documentElement.setAttribute('data-theme', currentTheme);
+    if (currentTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
     }
 
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
-        if (theme === 'dark') {
+        if (theme === 'light') {
             document.documentElement.removeAttribute('data-theme');
-            localStorage.setItem('theme', 'light');
-        } else {
-            document.documentElement.setAttribute('data-theme', 'dark');
             localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
         }
     });
 </script>
