@@ -7,12 +7,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
+            /* Light Theme (Default) */
+            --bg: #f0f4f8;
+            --surface: #ffffff;
+            --surface2: #e8edf5;
+            --border: #c8d3e8;
+            --accent: #2a4a8a;
+            --accent-light: #4a6fba;
+            --accent-pale: #dce6f5;
+            --text: #1a2a4a;
+            --muted: #7a8fab;
+        }
+
+        [data-theme="dark"] {
+            /* Dark Theme */
             --bg: #18181c;
             --surface: #111318;
             --surface2: #1a1d24;
             --border: #2a2d35;
             --accent: #2e5a88;
-            --accent2: #58a6ff;
+            --accent-light: #58a6ff; 
+            --accent-pale: #1c222e;
             --text: #d4dbe8;
             --muted: #5a6070;
         }
@@ -25,6 +40,7 @@
             color: var(--text);
             min-height: 100vh;
             overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         body::before {
@@ -38,6 +54,7 @@
             opacity: 0.4;
             pointer-events: none;
             z-index: 0;
+            transition: opacity 0.3s ease;
         }
 
         .container {
@@ -54,14 +71,45 @@
             animation: fadeUp 0.7s ease both;
         }
 
-        .header-tag {
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .header-top .header-tag {
             font-family: 'Space Mono', monospace;
             font-size: 11px;
             letter-spacing: 0.2em;
             color: var(--accent-light);
             text-transform: uppercase;
-            margin-bottom: 12px;
+            margin-bottom: 0;
         }
+
+        .theme-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .theme-btn:hover {
+            border-color: var(--accent-light);
+            color: var(--accent-light);
+        }
+
+        .sun-icon { display: none; }
+        .moon-icon { display: block; }
+        
+        [data-theme="dark"] .sun-icon { display: block; }
+        [data-theme="dark"] .moon-icon { display: none; }
 
         header h1 {
             font-size: clamp(2.4rem, 5vw, 3.6rem);
@@ -290,27 +338,27 @@
 <div class="container">
 
     <header>
-        <p class="header-tag">// Engineering Portfolio</p>
+        <div class="header-top">
+            <p class="header-tag">// Engineering Portfolio</p>
+            <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+        </div>
         <h1>Basan <span>Ali Aziz</span></h1>
         <p>Mechatronics &amp; Electromobility — AUIS, BSc Mechanical Engineering</p>
     </header>
 
-    <!-- ══════════════════════════════════════
-         Section 01: CNC Pen Plotter
-    ══════════════════════════════════════ -->
     <section class="project-section">
         <div class="section-header">
             <span class="section-number">01 //</span>
             <h2>CNC Pen Plotter</h2>
             <span class="section-meta">Arduino · GRBL · SolidWorks</span>
         </div>
-
         <div class="project-about">
             <p>I designed and fabricated a fully custom-built 2-axis CNC pen plotter from scratch. I modeled the frame in SolidWorks and 3D printed it in PLA. To drive the motion, I used NEMA 17 stepper motors controlled via an Arduino Nano running GRBL-Servo firmware, utilizing A4988 drivers and a GT2 belt system that I calibrated to 81 steps/mm. For my software workflow, I convert SVG artwork into G-code using svg2gcode, and then stream it to the machine via LaserGRBL. Using this setup, I have successfully reproduced detailed line art, including portrait work and hand-lettered text.</p>
         </div>
-
         <div class="cnc-grid">
-            <!-- hero (7) + tall (5) = 12, spans 2 rows -->
             <div class="media-item hero" onclick="openLightbox('Eren Gif.gif')">
                 <img src="Eren Gif.gif" alt="Plotter drawing Eren">
                 <div class="media-overlay"><span class="media-label">Eren — in progress</span></div>
@@ -319,7 +367,6 @@
                 <img src="Solidworks gif.gif" alt="SolidWorks model">
                 <div class="media-overlay"><span class="media-label">SolidWorks model</span></div>
             </div>
-            <!-- wide (7) sits below hero; third+third+third (4+4+4=12) fills row 3 -->
             <div class="media-item wide" onclick="openLightbox('Eren.png')">
                 <img src="Eren.png" alt="Eren final plot">
                 <div class="media-overlay"><span class="media-label">Eren — final output</span></div>
@@ -337,7 +384,6 @@
                 <div class="media-overlay"><span class="media-label">Text plotting</span></div>
             </div>
         </div>
-
         <div class="project-desc">
             <div class="desc-item">
                 <span class="desc-label">Controller</span>
@@ -366,22 +412,16 @@
         </div>
     </section>
 
-    <!-- ══════════════════════════════════════
-         Section 02: Lithophane Lamp
-    ══════════════════════════════════════ -->
     <section class="project-section">
         <div class="section-header">
             <span class="section-number">02 //</span>
             <h2>Lithophane Lamp</h2>
             <span class="section-meta">3D Print · Electronics · FastLED</span>
         </div>
-
         <div class="project-about">
             <p>I built a handmade rechargeable lithophane lamp as a gift. I designed the enclosure in SolidWorks and 3D printed it in PLA. Inside, it houses an 18650 battery that I charge via a TP4056 module and boost to operating voltage using an XL6009E1. For the lighting, I used a WS2812 LED ring driven by an Arduino Nano and the FastLED library, providing 8 selectable color modes. I also added a potentiometer to control the brightness and programmed a long-press random color function. I had to put some significant troubleshooting into resolving LED failures caused by voltage spikes from the boost converter, which I eventually fixed by adding filtering capacitors and fine-tuning the output voltage.</p>
         </div>
-
         <div class="cnc-grid">
-            <!-- hero (7) + tall (5) = 12, spans 2 rows -->
             <div class="media-item hero" onclick="openLightbox('Lamp1GIF.gif')">
                 <img src="Lamp1GIF.gif" alt="Lithophane lamp color modes">
                 <div class="media-overlay"><span class="media-label">Color modes — live</span></div>
@@ -390,7 +430,6 @@
                 <img src="Lamp 2.jpg" alt="Lithophane lamp detail">
                 <div class="media-overlay"><span class="media-label">Detail shot</span></div>
             </div>
-            <!-- wide (7) + standard (5) = 12 on row 2 bottom -->
             <div class="media-item wide" onclick="openLightbox('Lamp.jpg')">
                 <img src="Lamp.jpg" alt="Lithophane lamp final build">
                 <div class="media-overlay"><span class="media-label">Final build</span></div>
@@ -400,7 +439,6 @@
                 <div class="media-overlay"><span class="media-label">SolidWorks design</span></div>
             </div>
         </div>
-
         <div class="project-desc">
             <div class="desc-item">
                 <span class="desc-label">Power</span>
@@ -429,22 +467,16 @@
         </div>
     </section>
 
-    <!-- ══════════════════════════════════════
-         Section 03: 3 Speed Manual Gearbox
-    ══════════════════════════════════════ -->
     <section class="project-section">
         <div class="section-header">
             <span class="section-number">03 //</span>
             <h2>3 Speed Manual Gearbox</h2>
             <span class="section-meta">3D Print · Gear Ratios · Power Transmission</span>
         </div>
-
         <div class="project-about">
             <p>For my machine design project centered around gearing and power transmission, I naturally decided to build a 3-speed gearbox with a sliding clutch sleeve. My biggest challenge was shaft alignment: I had to design the gear sets so that the center distance was equal across all three ratios, ensuring the three shafts remained parallel regardless of which gear was engaged. Any mismatch would have caused the shafts to skew, introducing power loss and binding. Finally, I designed the housing in SolidWorks and manufactured it using wood and 3D printed PLA components.</p>
         </div>
-
         <div class="cnc-grid">
-            <!-- hero (7) + tall (5) = 12, spans 2 rows -->
             <div class="media-item hero" onclick="openLightbox('GB1.gif')">
                 <img src="GB1.gif" alt="Gearbox animation">
                 <div class="media-overlay"><span class="media-label">Gear change</span></div>
@@ -453,7 +485,6 @@
                 <img src="GB1.png" alt="Gearbox render">
                 <div class="media-overlay"><span class="media-label">Front view</span></div>
             </div>
-            <!-- wide (7) + standard (5) = 12 on row 2 bottom -->
             <div class="media-item wide" onclick="openLightbox('Gb2.gif')">
                 <img src="Gb2.gif" alt="Gearbox animation 2">
                 <div class="media-overlay"><span class="media-label">SolidWorks model</span></div>
@@ -463,7 +494,6 @@
                 <div class="media-overlay"><span class="media-label">Power path</span></div>
             </div>
         </div>
-
         <div class="project-desc">
             <div class="desc-item">
                 <span class="desc-label">Input</span>
@@ -484,22 +514,16 @@
         </div>
     </section>
 
-    <!-- ══════════════════════════════════════
-         Section 04: Filament Dryer
-    ══════════════════════════════════════ -->
     <section class="project-section">
         <div class="section-header">
             <span class="section-number">04 //</span>
             <h2>Filament Dryer</h2>
             <span class="section-meta">Thermodynamics · Control Electronics</span>
         </div>
-
         <div class="project-about">
             <p>I built a custom filament drying chamber to improve my 3D print quality. I used a 37L polypropylene container for the enclosure and fitted it with a 120W PTC fan heater as the primary heat source. Inside, I placed three DHT22 sensors at different levels to provide an averaged temperature reading across the full interior volume. To regulate it, I programmed a simple hysteresis control loop running on an Arduino Uno that keeps the internal temperature within ±2°C of the target setpoint. Finally, I power the entire system using a modified 650W desktop PSU.</p>
         </div>
-
         <div class="cnc-grid">
-            <!-- hero (7) + tall (5) = 12, spans 2 rows -->
             <div class="media-item hero" onclick="openLightbox('FD1.jpg')">
                 <img src="FD1.jpg" alt="Final build">
                 <div class="media-overlay"><span class="media-label">Final build</span></div>
@@ -508,7 +532,6 @@
                 <img src="FD2.jpg" alt="Electronics box">
                 <div class="media-overlay"><span class="media-label">Electronics box</span></div>
             </div>
-            <!-- wide (7) + standard (5) = 12 on row 2 bottom -->
             <div class="media-item wide" onclick="openLightbox('FD3.jpg')">
                 <img src="FD3.jpg" alt="Desktop PSU">
                 <div class="media-overlay"><span class="media-label">Desktop PSU</span></div>
@@ -518,7 +541,6 @@
                 <div class="media-overlay"><span class="media-label">Sensor readings</span></div>
             </div>
         </div>
-
         <div class="project-desc">
             <div class="desc-item">
                 <span class="desc-label">Power Supply</span>
@@ -539,24 +561,18 @@
         </div>
     </section>
 
-    <!-- ══════════════════════════════════════
-         Section 05: Bismuth Jewelry
-    ══════════════════════════════════════ -->
     <section class="project-section">
         <div class="section-header">
             <span class="section-number">05 //</span>
             <h2>Bismuth Jewelry</h2>
             <span class="section-meta">Material Science</span>
         </div>
-
         <div class="project-about">
             <p>For my experimental materials project, I used bismuth that I sourced from a professor. Because bismuth expands as it cools from a melt, it forms distinctive stepped crystals with an iridescent oxide layer. My goal was to shape these crystals into a matching jewelry set—a necklace pendant and earrings. 
 
-The main challenges I faced were the material's brittleness, controlling the crystal size through my pour timing, and managing thermal shock on the receiving vessel during the melt transfer (I actually had one pot crack on me and had to replace it with a more heat-resistant option). Once I achieved the right crystal sizes, I refined the pieces using sandpaper, working my way from 200 up to 2000 grit. Finally, to preserve the iridescent color—which is a thin oxidation layer vulnerable to further air exposure—I sealed the crystals with UV nail polish. While this slightly dulled some of the color by interfering with the light reflections, my overall result was a wearable, one-of-a-kind set.</p>
+            The main challenges I faced were the material's brittleness, controlling the crystal size through my pour timing, and managing thermal shock on the receiving vessel during the melt transfer (I actually had one pot crack on me and had to replace it with a more heat-resistant option). Once I achieved the right crystal sizes, I refined the pieces using sandpaper, working my way from 200 up to 2000 grit. Finally, to preserve the iridescent color—which is a thin oxidation layer vulnerable to further air exposure—I sealed the crystals with UV nail polish. While this slightly dulled some of the color by interfering with the light reflections, my overall result was a wearable, one-of-a-kind set.</p>
         </div>
-
         <div class="cnc-grid">
-            <!-- hero (7) + tall (5) = 12, spans 2 rows -->
             <div class="media-item hero" onclick="openLightbox('B1.jpg')">
                 <img src="B1.jpg" alt="Final jewelry set">
                 <div class="media-overlay"><span class="media-label">Final</span></div>
@@ -565,7 +581,6 @@ The main challenges I faced were the material's brittleness, controlling the cry
                 <img src="B2.jpg" alt="Crystal geode">
                 <div class="media-overlay"><span class="media-label">Crystal geode</span></div>
             </div>
-            <!-- wide (7) + standard (5) = 12 on row 2 bottom -->
             <div class="media-item wide" onclick="openLightbox('B3.jpg')">
                 <img src="B3.jpg" alt="Failed attempt">
                 <div class="media-overlay"><span class="media-label">Failed attempt</span></div>
@@ -575,7 +590,6 @@ The main challenges I faced were the material's brittleness, controlling the cry
                 <div class="media-overlay"><span class="media-label">Crystals before refinement</span></div>
             </div>
         </div>
-
         <div class="project-desc">
             <div class="desc-item">
                 <span class="desc-label">Material</span>
@@ -594,13 +608,13 @@ The main challenges I faced were the material's brittleness, controlling the cry
 
 </div>
 
-<!-- Lightbox -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
     <button class="lightbox-close" onclick="closeLightbox()">ESC / close</button>
     <div class="lightbox-inner" id="lightbox-inner"></div>
 </div>
 
 <script>
+    // --- Lightbox Logic ---
     function openLightbox(src) {
         const lb = document.getElementById('lightbox');
         const inner = document.getElementById('lightbox-inner');
@@ -617,6 +631,26 @@ The main challenges I faced were the material's brittleness, controlling the cry
     }
 
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox({ target: document.getElementById('lightbox') }); });
+
+    // --- Theme Toggle Logic ---
+    const toggleBtn = document.getElementById('theme-toggle');
+    const currentTheme = localStorage.getItem('theme');
+    
+    // Check if the user previously saved a theme preference
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        let theme = document.documentElement.getAttribute('data-theme');
+        if (theme === 'dark') {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+    });
 </script>
 </body>
 </html>
