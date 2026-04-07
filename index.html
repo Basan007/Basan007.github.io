@@ -92,6 +92,7 @@
         .project-section:nth-child(3) { animation-delay: 0.10s; }
         .project-section:nth-child(4) { animation-delay: 0.15s; }
         .project-section:nth-child(5) { animation-delay: 0.20s; }
+        .project-section:nth-child(6) { animation-delay: 0.25s; }
 
         .section-header {
             display: flex;
@@ -158,33 +159,8 @@
             box-shadow: 0 2px 8px rgba(42, 74, 138, 0.07);
         }
 
-        /* Placeholder slot styling */
-        .media-item.placeholder {
-            cursor: default;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            border: 1.5px dashed var(--border);
-            background: var(--accent-pale);
-            box-shadow: none;
-        }
-
-        .media-item.placeholder .slot-label {
-            font-family: 'Space Mono', monospace;
-            font-size: 11px;
-            color: var(--muted);
-            letter-spacing: 0.1em;
-        }
-
-        .media-item.placeholder .slot-icon {
-            font-size: 1.4rem;
-            opacity: 0.35;
-        }
-
-        .media-item:not(.placeholder):hover .media-overlay { opacity: 1; }
-        .media-item:not(.placeholder):hover img { transform: scale(1.04); }
+        .media-item:hover .media-overlay { opacity: 1; }
+        .media-item:hover img { transform: scale(1.04); }
 
         .media-item.hero     { grid-column: span 7; grid-row: span 2; }
         .media-item.tall     { grid-column: span 5; grid-row: span 2; }
@@ -320,6 +296,9 @@
         <p>Mechatronics &amp; Electromobility — AUIS, BSc Mechanical Engineering</p>
     </header>
 
+    <!-- ══════════════════════════════════════
+         Section 01: CNC Pen Plotter
+    ══════════════════════════════════════ -->
     <section class="project-section">
         <div class="section-header">
             <span class="section-number">01 //</span>
@@ -332,6 +311,7 @@
         </div>
 
         <div class="cnc-grid">
+            <!-- hero (7) + tall (5) = 12, spans 2 rows -->
             <div class="media-item hero" onclick="openLightbox('Eren Gif.gif')">
                 <img src="Eren Gif.gif" alt="Plotter drawing Eren">
                 <div class="media-overlay"><span class="media-label">Eren — in progress</span></div>
@@ -340,6 +320,7 @@
                 <img src="Solidworks gif.gif" alt="SolidWorks model">
                 <div class="media-overlay"><span class="media-label">SolidWorks model</span></div>
             </div>
+            <!-- wide (7) sits below hero; third+third+third (4+4+4=12) fills row 3 -->
             <div class="media-item wide" onclick="openLightbox('Eren.png')">
                 <img src="Eren.png" alt="Eren final plot">
                 <div class="media-overlay"><span class="media-label">Eren — final output</span></div>
@@ -386,6 +367,9 @@
         </div>
     </section>
 
+    <!-- ══════════════════════════════════════
+         Section 02: Lithophane Lamp
+    ══════════════════════════════════════ -->
     <section class="project-section">
         <div class="section-header">
             <span class="section-number">02 //</span>
@@ -398,6 +382,7 @@
         </div>
 
         <div class="cnc-grid">
+            <!-- hero (7) + tall (5) = 12, spans 2 rows -->
             <div class="media-item hero" onclick="openLightbox('Lamp1GIF.gif')">
                 <img src="Lamp1GIF.gif" alt="Lithophane lamp color modes">
                 <div class="media-overlay"><span class="media-label">Color modes — live</span></div>
@@ -406,6 +391,7 @@
                 <img src="Lamp 2.jpg" alt="Lithophane lamp detail">
                 <div class="media-overlay"><span class="media-label">Detail shot</span></div>
             </div>
+            <!-- wide (7) + standard (5) = 12 on row 2 bottom -->
             <div class="media-item wide" onclick="openLightbox('Lamp.jpg')">
                 <img src="Lamp.jpg" alt="Lithophane lamp final build">
                 <div class="media-overlay"><span class="media-label">Final build</span></div>
@@ -444,32 +430,37 @@
         </div>
     </section>
 
+    <!-- ══════════════════════════════════════
+         Section 03: 3 Speed Manual Gearbox
+    ══════════════════════════════════════ -->
     <section class="project-section">
         <div class="section-header">
             <span class="section-number">03 //</span>
             <h2>3 Speed Manual Gearbox</h2>
-            <span class="section-meta">3D Print . Gear ratios . Power transmission</span>
+            <span class="section-meta">3D Print · Gear Ratios · Power Transmission</span>
         </div>
 
         <div class="project-about">
-            <p>I was assigned a project for machine design that needed to include gearing and some sort of power tranmission, so the natural step was to make the gold standred for power transmission, a gearbox! I didn't have much time, so I came up with a basic, 3 speed tranmission with a sliding cluth sleeve. The biggest challange here was getting the shafts alligned, figuring our the gearing such that the center distence for all the gears were equal, because if not, different gear sets would make the 3 shafts not parallal, causing power loss. </p>
+            <p>A machine design project built around gearing and power transmission — naturally leading to a 3-speed gearbox with a sliding clutch sleeve. The biggest challenge was shaft alignment: the gear sets had to be designed so that the center distance was equal across all three ratios, ensuring the three shafts remained parallel regardless of which gear was engaged. Any mismatch would cause the shafts to skew, introducing power loss and binding. The housing was designed in SolidWorks and manufactured from wood and 3D printed PLA components.</p>
         </div>
 
         <div class="cnc-grid">
+            <!-- hero (7) + tall (5) = 12, spans 2 rows -->
             <div class="media-item hero" onclick="openLightbox('GB1.gif')">
-                <img src="GB1.gif" alt="Gearbox Animation 1">
+                <img src="GB1.gif" alt="Gearbox animation">
                 <div class="media-overlay"><span class="media-label">Gear change</span></div>
             </div>
             <div class="media-item tall" onclick="openLightbox('GB1.png')">
-                <img src="GB1.png" alt="Gearbox Render">
+                <img src="GB1.png" alt="Gearbox render">
                 <div class="media-overlay"><span class="media-label">Front view</span></div>
             </div>
+            <!-- wide (7) + standard (5) = 12 on row 2 bottom -->
             <div class="media-item wide" onclick="openLightbox('Gb2.gif')">
-                <img src="Gb2.gif" alt="Gearbox Animation 2">
-                <div class="media-overlay"><span class="media-label">Solidworks model</span></div>
+                <img src="Gb2.gif" alt="Gearbox animation 2">
+                <div class="media-overlay"><span class="media-label">SolidWorks model</span></div>
             </div>
-            <div class="media-item tall" onclick="openLightbox('GB2.jpg')">
-                <img src="GB2.jpg" alt="Gearbox Animation 2">
+            <div class="media-item standard" onclick="openLightbox('GB2.jpg')">
+                <img src="GB2.jpg" alt="Power path">
                 <div class="media-overlay"><span class="media-label">Power path</span></div>
             </div>
         </div>
@@ -481,44 +472,49 @@
             </div>
             <div class="desc-item">
                 <span class="desc-label">Ratios</span>
-                <span class="desc-value">2.3:1|1.57:1|1:1</span>
+                <span class="desc-value">2.3:1 · 1.57:1 · 1:1</span>
             </div>
             <div class="desc-item">
                 <span class="desc-label">Material</span>
-                <span class="desc-value">Wood . PLA</span>
+                <span class="desc-value">Wood · PLA</span>
             </div>
             <div class="desc-item">
                 <span class="desc-label">Design</span>
-                <span class="desc-value">Solidworks</span>
+                <span class="desc-value">SolidWorks</span>
             </div>
         </div>
     </section>
 
+    <!-- ══════════════════════════════════════
+         Section 04: Filament Dryer
+    ══════════════════════════════════════ -->
     <section class="project-section">
         <div class="section-header">
             <span class="section-number">04 //</span>
             <h2>Filament Dryer</h2>
-            <span class="section-meta">Thermodynamics . Control electronics</span>
+            <span class="section-meta">Thermodynamics · Control Electronics</span>
         </div>
 
         <div class="project-about">
-            <p>Needed something to dry out all my 3D printing filament. Put together this chamber using a 37L PP container with a 120watt PTC fan heater as my main source of heat. The inside has 3 DHT22 sensors placed at different levels to get an avarage overall reading inside. Simple hysteresis was used to keep the internal temperature within +-2 degrees of the target temperature. The entire thing is powered by a modified 650watt desktop PSU. </p>
+            <p>A custom filament drying chamber built to improve 3D print quality. The enclosure is a 37L polypropylene container fitted with a 120W PTC fan heater as the primary heat source. Three DHT22 sensors are placed at different levels inside the chamber to provide an averaged temperature reading across the full interior volume. A simple hysteresis control loop running on an Arduino Uno keeps the internal temperature within ±2°C of the target setpoint. The entire system is powered by a modified 650W desktop PSU.</p>
         </div>
 
         <div class="cnc-grid">
+            <!-- hero (7) + tall (5) = 12, spans 2 rows -->
             <div class="media-item hero" onclick="openLightbox('FD1.jpg')">
                 <img src="FD1.jpg" alt="Final build">
                 <div class="media-overlay"><span class="media-label">Final build</span></div>
             </div>
             <div class="media-item tall" onclick="openLightbox('FD2.jpg')">
-                <img src="FD2.jpg" alt="Electronic box">
-                <div class="media-overlay"><span class="media-label">Electronic box</span></div>
+                <img src="FD2.jpg" alt="Electronics box">
+                <div class="media-overlay"><span class="media-label">Electronics box</span></div>
             </div>
+            <!-- wide (7) + standard (5) = 12 on row 2 bottom -->
             <div class="media-item wide" onclick="openLightbox('FD3.jpg')">
                 <img src="FD3.jpg" alt="Desktop PSU">
                 <div class="media-overlay"><span class="media-label">Desktop PSU</span></div>
             </div>
-            <div class="media-item tall" onclick="openLightbox('FD4.jpg')">
+            <div class="media-item standard" onclick="openLightbox('FD4.jpg')">
                 <img src="FD4.jpg" alt="Sensor readings">
                 <div class="media-overlay"><span class="media-label">Sensor readings</span></div>
             </div>
@@ -527,15 +523,15 @@
         <div class="project-desc">
             <div class="desc-item">
                 <span class="desc-label">Power Supply</span>
-                <span class="desc-value">Modified Desktop PSU</span>
+                <span class="desc-value">Modified desktop PSU · 650W</span>
             </div>
             <div class="desc-item">
                 <span class="desc-label">Heat Source</span>
-                <span class="desc-value">120W PTC . IBT-2 Driver</span>
+                <span class="desc-value">120W PTC · IBT-2 driver</span>
             </div>
             <div class="desc-item">
                 <span class="desc-label">Sensors</span>
-                <span class="desc-value">DHT22</span>
+                <span class="desc-value">DHT22 × 3</span>
             </div>
             <div class="desc-item">
                 <span class="desc-label">Controller</span>
@@ -544,6 +540,9 @@
         </div>
     </section>
 
+    <!-- ══════════════════════════════════════
+         Section 05: Bismuth Jewelry
+    ══════════════════════════════════════ -->
     <section class="project-section">
         <div class="section-header">
             <span class="section-number">05 //</span>
@@ -552,23 +551,25 @@
         </div>
 
         <div class="project-about">
-            <p>Got my hands on some bismuth from my professor. Bismuth has a cool property that if you cool it down, it actually expands and creates nice crystals. I had the idea of making these crystals into a jewwerly set of a necklece pendent and earrings. The main problems I faced was that bismuth is a brittle material, and shaping the crystals would be very hard, but after lots of trail and error I finally got the right size crystals. To make the cystals form, the bismuth had to be molted in a stainless steel pot and poured into another pot while liquid, in some of my attempts this caused the second pot a tempereture shock which broke it, I had to switch to a more heat resistant material. The next challange was keeping the color on them, since the nice color on the crystal is a small layer of oxidation, further exposure to air would dull it. I covered the crystals with UV nail polish to protect it from enviroment and keep it permanantly sealed, this caused some of the color to go dull due to the nail polish messing with the light refelctions. But the overall resauts were nice. All the bismuth was melted in a stainless steel pot</p>
+            <p>An experimental materials project using bismuth sourced from a professor. Bismuth expands as it cools from a melt, forming distinctive stepped crystals with an iridescent oxide layer. The goal was to shape these crystals into a matching jewelry set — a necklace pendant and earrings. The main challenges were the material's brittleness, controlling crystal size through pour timing, and managing thermal shock on the receiving vessel during the melt transfer (one pot cracked and had to be replaced with a more heat-resistant option). Once the right crystal sizes were achieved, the pieces were refined with sandpaper from 200 to 2000 grit. To preserve the iridescent color — which is a thin oxidation layer vulnerable to further air exposure — the crystals were sealed with UV nail polish. This slightly dulled some of the color by interfering with light reflections, but the overall result was a wearable, one-of-a-kind set.</p>
         </div>
 
         <div class="cnc-grid">
+            <!-- hero (7) + tall (5) = 12, spans 2 rows -->
             <div class="media-item hero" onclick="openLightbox('B1.jpg')">
-                <img src="B1.jpg" alt="Final">
+                <img src="B1.jpg" alt="Final jewelry set">
                 <div class="media-overlay"><span class="media-label">Final</span></div>
             </div>
             <div class="media-item tall" onclick="openLightbox('B2.jpg')">
                 <img src="B2.jpg" alt="Crystal geode">
                 <div class="media-overlay"><span class="media-label">Crystal geode</span></div>
             </div>
+            <!-- wide (7) + standard (5) = 12 on row 2 bottom -->
             <div class="media-item wide" onclick="openLightbox('B3.jpg')">
                 <img src="B3.jpg" alt="Failed attempt">
                 <div class="media-overlay"><span class="media-label">Failed attempt</span></div>
             </div>
-            <div class="media-item tall" onclick="openLightbox('B4.jpg')">
+            <div class="media-item standard" onclick="openLightbox('B4.jpg')">
                 <img src="B4.jpg" alt="Crystals before refinement">
                 <div class="media-overlay"><span class="media-label">Crystals before refinement</span></div>
             </div>
@@ -576,22 +577,23 @@
 
         <div class="project-desc">
             <div class="desc-item">
-                <span class="desc-label">Materials</span>
+                <span class="desc-label">Material</span>
                 <span class="desc-value">Bismuth</span>
             </div>
             <div class="desc-item">
                 <span class="desc-label">Melting method</span>
-                <span class="desc-value">Gas burner using stainless steel pot</span>
+                <span class="desc-value">Gas burner · stainless steel pot</span>
             </div>
             <div class="desc-item">
-                <span class="desc-label">Polishing Method</span>
-                <span class="desc-value">Sand paper (200-2000)grit</span>
+                <span class="desc-label">Finishing</span>
+                <span class="desc-value">Sandpaper 200–2000 grit · UV nail polish seal</span>
             </div>
         </div>
     </section>
 
 </div>
 
+<!-- Lightbox -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
     <button class="lightbox-close" onclick="closeLightbox()">ESC / close</button>
     <div class="lightbox-inner" id="lightbox-inner"></div>
