@@ -1,48 +1,1183 @@
-<section class="project-section">
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Basan | Engineering Portfolio</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        :root {
+
+            --bg: #f0f4f8;
+
+            --surface: #ffffff;
+
+            --surface2: #e8edf5;
+
+            --border: #c8d3e8;
+
+            --accent: #2a4a8a;
+
+            --accent-light: #4a6fba;
+
+            --accent-pale: #dce6f5;
+
+            --text: #1a2a4a;
+
+            --muted: #7a8fab;
+
+        }
+
+
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+
+
+        body {
+
+            font-family: 'Syne', sans-serif;
+
+            background: var(--bg);
+
+            color: var(--text);
+
+            min-height: 100vh;
+
+            overflow-x: hidden;
+
+        }
+
+
+
+        body::before {
+
+            content: '';
+
+            position: fixed;
+
+            inset: 0;
+
+            background-image:
+
+                linear-gradient(var(--border) 1px, transparent 1px),
+
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+
+            background-size: 60px 60px;
+
+            opacity: 0.4;
+
+            pointer-events: none;
+
+            z-index: 0;
+
+        }
+
+
+
+        .container {
+
+            max-width: 1100px;
+
+            margin: 0 auto;
+
+            padding: 60px 32px;
+
+            position: relative;
+
+            z-index: 1;
+
+        }
+
+
+
+        /* ── Header ── */
+
+        header {
+
+            margin-bottom: 80px;
+
+            animation: fadeUp 0.7s ease both;
+
+        }
+
+
+
+        .header-tag {
+
+            font-family: 'Space Mono', monospace;
+
+            font-size: 11px;
+
+            letter-spacing: 0.2em;
+
+            color: var(--accent-light);
+
+            text-transform: uppercase;
+
+            margin-bottom: 12px;
+
+        }
+
+
+
+        header h1 {
+
+            font-size: clamp(2.4rem, 5vw, 3.6rem);
+
+            font-weight: 800;
+
+            color: var(--text);
+
+            line-height: 1.1;
+
+            letter-spacing: -0.02em;
+
+            margin-bottom: 10px;
+
+        }
+
+
+
+        header h1 span { color: var(--accent); }
+
+
+
+        header p {
+
+            font-family: 'Space Mono', monospace;
+
+            font-size: 13px;
+
+            color: var(--muted);
+
+            letter-spacing: 0.05em;
+
+        }
+
+
+
+        /* ── Section ── */
+
+        .project-section {
+
+            margin-bottom: 90px;
+
+            animation: fadeUp 0.7s ease both;
+
+        }
+
+
+
+        .project-section:nth-child(2) { animation-delay: 0.05s; }
+
+        .project-section:nth-child(3) { animation-delay: 0.10s; }
+
+        .project-section:nth-child(4) { animation-delay: 0.15s; }
+
+        .project-section:nth-child(5) { animation-delay: 0.20s; }
+
+
+
+        .section-header {
+
+            display: flex;
+
+            align-items: baseline;
+
+            gap: 16px;
+
+            margin-bottom: 20px;
+
+            padding-bottom: 14px;
+
+            border-bottom: 1px solid var(--border);
+
+        }
+
+
+
+        .section-number {
+
+            font-family: 'Space Mono', monospace;
+
+            font-size: 11px;
+
+            color: var(--accent-light);
+
+            letter-spacing: 0.15em;
+
+        }
+
+
+
+        .section-header h2 {
+
+            font-size: 1.5rem;
+
+            font-weight: 700;
+
+            color: var(--text);
+
+            letter-spacing: -0.01em;
+
+        }
+
+
+
+        .section-meta {
+
+            font-family: 'Space Mono', monospace;
+
+            font-size: 11px;
+
+            color: var(--muted);
+
+            margin-left: auto;
+
+        }
+
+
+
+        /* ── Project description paragraph ── */
+
+        .project-about {
+
+            margin-bottom: 24px;
+
+            padding: 18px 22px;
+
+            background: var(--surface);
+
+            border: 1px solid var(--border);
+
+            border-left: 3px solid var(--accent);
+
+            border-radius: 6px;
+
+            font-size: 14px;
+
+            line-height: 1.75;
+
+            color: var(--text);
+
+        }
+
+
+
+        .project-about p {
+
+            opacity: 0.85;
+
+        }
+
+
+
+        /* ── Gallery Grid ── */
+
+        .cnc-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(12, 1fr);
+
+            grid-auto-rows: 200px;
+
+            gap: 10px;
+
+        }
+
+
+
+        .media-item {
+
+            position: relative;
+
+            overflow: hidden;
+
+            border-radius: 6px;
+
+            border: 1px solid var(--border);
+
+            background: var(--surface2);
+
+            cursor: pointer;
+
+            box-shadow: 0 2px 8px rgba(42, 74, 138, 0.07);
+
+        }
+
+
+
+        /* Placeholder slot styling */
+
+        .media-item.placeholder {
+
+            cursor: default;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            border: 1.5px dashed var(--border);
+
+            background: var(--accent-pale);
+
+            box-shadow: none;
+
+        }
+
+
+
+        .media-item.placeholder .slot-label {
+
+            font-family: 'Space Mono', monospace;
+
+            font-size: 11px;
+
+            color: var(--muted);
+
+            letter-spacing: 0.1em;
+
+        }
+
+
+
+        .media-item.placeholder .slot-icon {
+
+            font-size: 1.4rem;
+
+            opacity: 0.35;
+
+        }
+
+
+
+        .media-item:not(.placeholder):hover .media-overlay { opacity: 1; }
+
+        .media-item:not(.placeholder):hover img { transform: scale(1.04); }
+
+
+
+        .media-item.hero     { grid-column: span 7; grid-row: span 2; }
+
+        .media-item.tall     { grid-column: span 5; grid-row: span 2; }
+
+        .media-item.wide     { grid-column: span 7; }
+
+        .media-item.standard { grid-column: span 5; }
+
+        .media-item.third    { grid-column: span 4; }
+
+        .media-item.half     { grid-column: span 6; }
+
+        .media-item.full     { grid-column: span 12; }
+
+
+
+        .media-item img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition: transform 0.4s ease;
+
+        }
+
+
+
+        .media-overlay {
+
+            position: absolute;
+
+            inset: 0;
+
+            background: linear-gradient(to top, rgba(26, 42, 74, 0.82) 0%, transparent 60%);
+
+            opacity: 0;
+
+            transition: opacity 0.3s ease;
+
+            display: flex;
+
+            align-items: flex-end;
+
+            padding: 14px;
+
+        }
+
+
+
+        .media-label {
+
+            font-family: 'Space Mono', monospace;
+
+            font-size: 11px;
+
+            color: #c8d8f5;
+
+            letter-spacing: 0.1em;
+
+        }
+
+
+
+        /* ── Project description strip ── */
+
+        .project-desc {
+
+            margin-top: 16px;
+
+            padding: 16px 20px;
+
+            background: var(--surface);
+
+            border: 1px solid var(--border);
+
+            border-radius: 6px;
+
+            display: flex;
+
+            gap: 32px;
+
+            flex-wrap: wrap;
+
+            box-shadow: 0 2px 8px rgba(42, 74, 138, 0.06);
+
+        }
+
+
+
+        .desc-item {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 4px;
+
+        }
+
+
+
+        .desc-label {
+
+            font-family: 'Space Mono', monospace;
+
+            font-size: 10px;
+
+            color: var(--muted);
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.12em;
+
+        }
+
+
+
+        .desc-value {
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            color: var(--accent);
+
+        }
+
+
+
+        /* ── Lightbox ── */
+
+        .lightbox {
+
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(10, 18, 40, 0.92);
+
+            z-index: 1000;
+
+            align-items: center;
+
+            justify-content: center;
+
+            backdrop-filter: blur(8px);
+
+        }
+
+
+
+        .lightbox.active { display: flex; }
+
+
+
+        .lightbox-inner {
+
+            max-width: 90vw;
+
+            max-height: 90vh;
+
+            position: relative;
+
+        }
+
+
+
+        .lightbox-inner img {
+
+            max-width: 90vw;
+
+            max-height: 85vh;
+
+            border-radius: 8px;
+
+            display: block;
+
+        }
+
+
+
+        .lightbox-close {
+
+            position: fixed;
+
+            top: 24px;
+
+            right: 28px;
+
+            background: none;
+
+            border: 1px solid rgba(200, 211, 232, 0.3);
+
+            color: #c8d3e8;
+
+            font-family: 'Space Mono', monospace;
+
+            font-size: 13px;
+
+            padding: 6px 14px;
+
+            border-radius: 4px;
+
+            cursor: pointer;
+
+            transition: border-color 0.2s;
+
+        }
+
+
+
+        .lightbox-close:hover { border-color: #c8d3e8; color: #fff; }
+
+
+
+        @keyframes fadeUp {
+
+            from { opacity: 0; transform: translateY(24px); }
+
+            to   { opacity: 1; transform: translateY(0); }
+
+        }
+
+
+
+        @media (max-width: 700px) {
+
+            .cnc-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 160px; }
+
+            .media-item.hero, .media-item.tall, .media-item.wide,
+
+            .media-item.standard, .media-item.third, .media-item.half,
+
+            .media-item.full { grid-column: span 2; grid-row: span 1; }
+
+            .project-desc { gap: 16px; }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+
+
+    <header>
+
+        <p class="header-tag">// Engineering Portfolio</p>
+
+        <h1>Basan <span>Ali Aziz</span></h1>
+
+        <p>Mechatronics &amp; Electromobility — AUIS, BSc Mechanical Engineering</p>
+
+    </header>
+
+
+
+    <!-- ══════════════════════════════════════
+
+         Section 01: CNC Pen Plotter
+
+    ══════════════════════════════════════ -->
+
+    <section class="project-section">
+
         <div class="section-header">
-            <span class="section-number">03 //</span>
-            <h2>3 Speed Manual Gearbox</h2>
-            <span class="section-meta">ADD TAGS</span>
+
+            <span class="section-number">01 //</span>
+
+            <h2>CNC Pen Plotter</h2>
+
+            <span class="section-meta">Arduino · GRBL · SolidWorks</span>
+
         </div>
+
+
+
+        <!-- PROJECT DESCRIPTION — edit the text inside <p> -->
 
         <div class="project-about">
-            <p>Coming soon</p>
+
+            <p>A fully custom-built 2-axis CNC pen plotter designed and fabricated from scratch. The frame was modeled in SolidWorks and 3D printed in PLA. Motion is driven by NEMA 17 stepper motors controlled via an Arduino Nano running GRBL-Servo firmware, with A4988 drivers and a GT2 belt system calibrated to 81 steps/mm. The workflow converts SVG artwork into G-code using svg2gcode, then streams it to the machine via LaserGRBL. The plotter has successfully reproduced detailed line art including portrait work and hand-lettered text.</p>
+
         </div>
+
+
 
         <div class="cnc-grid">
-            <div class="media-item hero" onclick="openLightbox('GB1.gif')">
-                <img src="GB1.gif" alt="Gearbox Animation 1">
-                <div class="media-overlay"><span class="media-label">Animation 1</span></div>
+
+            <div class="media-item hero" onclick="openLightbox('Eren Gif.gif')">
+
+                <img src="Eren Gif.gif" alt="Plotter drawing Eren">
+
+                <div class="media-overlay"><span class="media-label">Eren — in progress</span></div>
+
             </div>
-            
-            <div class="media-item tall" onclick="openLightbox('GB1.png')">
-                <img src="GB1.png" alt="Gearbox Render">
-                <div class="media-overlay"><span class="media-label">Render</span></div>
+
+            <div class="media-item tall" onclick="openLightbox('Solidworks gif.gif')">
+
+                <img src="Solidworks gif.gif" alt="SolidWorks model">
+
+                <div class="media-overlay"><span class="media-label">SolidWorks model</span></div>
+
             </div>
-            
-            <div class="media-item wide" onclick="openLightbox('Gb2.gif')">
-                <img src="Gb2.gif" alt="Gearbox Animation 2">
-                <div class="media-overlay"><span class="media-label">Animation 2</span></div>
+
+            <div class="media-item wide" onclick="openLightbox('Eren.png')">
+
+                <img src="Eren.png" alt="Eren final plot">
+
+                <div class="media-overlay"><span class="media-label">Eren — final output</span></div>
+
             </div>
-            
-            <div class="media-item standard placeholder">
-                <span class="slot-icon">🖼</span>
-                <span class="slot-label">img src="YOUR_FILE.jpg"</span>
+
+            <div class="media-item third" onclick="openLightbox('Calibration.png')">
+
+                <img src="Calibration.png" alt="Calibration">
+
+                <div class="media-overlay"><span class="media-label">Calibration test</span></div>
+
             </div>
+
+            <div class="media-item third" onclick="openLightbox('Kratos.png')">
+
+                <img src="Kratos.png" alt="Kratos plot">
+
+                <div class="media-overlay"><span class="media-label">Kratos</span></div>
+
+            </div>
+
+            <div class="media-item third" onclick="openLightbox('Text gif.gif')">
+
+                <img src="Text gif.gif" alt="Text plotting">
+
+                <div class="media-overlay"><span class="media-label">Text plotting</span></div>
+
+            </div>
+
         </div>
 
+
+
         <div class="project-desc">
+
             <div class="desc-item">
-                <span class="desc-label">Topic</span>
-                <span class="desc-value">ph</span>
+
+                <span class="desc-label">Controller</span>
+
+                <span class="desc-value">Arduino Nano + GRBL-Servo</span>
+
             </div>
+
             <div class="desc-item">
-                <span class="desc-label">Tools</span>
-                <span class="desc-value">ph</span>
+
+                <span class="desc-label">Motors</span>
+
+                <span class="desc-value">NEMA 17 + A4988</span>
+
             </div>
+
             <div class="desc-item">
-                <span class="desc-label">Year</span>
-                <span class="desc-value">2024 – 2025</span>
+
+                <span class="desc-label">Calibration</span>
+
+                <span class="desc-value">81 steps/mm · GT2 belt</span>
+
             </div>
+
+            <div class="desc-item">
+
+                <span class="desc-label">Workflow</span>
+
+                <span class="desc-value">SVG → svg2gcode → LaserGRBL</span>
+
+            </div>
+
+            <div class="desc-item">
+
+                <span class="desc-label">Design</span>
+
+                <span class="desc-value">SolidWorks</span>
+
+            </div>
+
+            <div class="desc-item">
+
+                <span class="desc-label">Frame</span>
+
+                <span class="desc-value">FDM 3D printed · PLA</span>
+
+            </div>
+
         </div>
+
     </section>
+
+
+
+    <!-- ══════════════════════════════════════
+
+         Section 02: Lithophane Lamp
+
+    ══════════════════════════════════════ -->
+
+    <section class="project-section">
+
+        <div class="section-header">
+
+            <span class="section-number">02 //</span>
+
+            <h2>Lithophane Lamp</h2>
+
+            <span class="section-meta">3D Print · Electronics · FastLED</span>
+
+        </div>
+
+
+
+        <!-- PROJECT DESCRIPTION — edit the text inside <p> -->
+
+        <div class="project-about">
+
+            <p>A handmade rechargeable lithophane lamp built as a gift. The enclosure was designed in SolidWorks and 3D printed in PLA, housing an 18650 battery charged via a TP4056 module and boosted to operating voltage by an XL6009E1. A WS2812 LED ring driven by an Arduino Nano and the FastLED library provides 8 selectable color modes with potentiometer-controlled brightness and a long-press random color function. Significant troubleshooting went into resolving LED failures caused by voltage spikes from the boost converter, resolved by adding filtering capacitors and tuning the output voltage.</p>
+
+        </div>
+
+
+
+        <div class="cnc-grid">
+
+            <div class="media-item hero" onclick="openLightbox('Lamp1GIF.gif')">
+
+                <img src="Lamp1GIF.gif" alt="Lithophane lamp color modes">
+
+                <div class="media-overlay"><span class="media-label">Color modes — live</span></div>
+
+            </div>
+
+            <div class="media-item tall" onclick="openLightbox('Lamp 2.jpg')">
+
+                <img src="Lamp 2.jpg" alt="Lithophane lamp detail">
+
+                <div class="media-overlay"><span class="media-label">Detail shot</span></div>
+
+            </div>
+
+            <div class="media-item wide" onclick="openLightbox('Lamp.jpg')">
+
+                <img src="Lamp.jpg" alt="Lithophane lamp final build">
+
+                <div class="media-overlay"><span class="media-label">Final build</span></div>
+
+            </div>
+
+            <div class="media-item standard" onclick="openLightbox('LampSW.png')">
+
+                <img src="LampSW.png" alt="SolidWorks design">
+
+                <div class="media-overlay"><span class="media-label">SolidWorks design</span></div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="project-desc">
+
+            <div class="desc-item">
+
+                <span class="desc-label">Power</span>
+
+                <span class="desc-value">18650 · TP4056 · XL6009E1</span>
+
+            </div>
+
+            <div class="desc-item">
+
+                <span class="desc-label">LEDs</span>
+
+                <span class="desc-value">WS2812 Ring · FastLED</span>
+
+            </div>
+
+            <div class="desc-item">
+
+                <span class="desc-label">Controller</span>
+
+                <span class="desc-value">Arduino Nano</span>
+
+            </div>
+
+            <div class="desc-item">
+
+                <span class="desc-label">Modes</span>
+
+                <span class="desc-value">8 color modes · potentiometer brightness</span>
+
+            </div>
+
+            <div class="desc-item">
+
+                <span class="desc-label">Design</span>
+
+                <span class="desc-value">SolidWorks</span>
+
+            </div>
+
+            <div class="desc-item">
+
+                <span class="desc-label">Shell</span>
+
+                <span class="desc-value">FDM 3D printed · PLA</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ══════════════════════════════════════
+
+         Section 03: 3 Speed Tranny
+
+    ══════════════════════════════════════ -->
+
+    <section class="project-section">
+
+        <div class="section-header">
+
+            <span class="section-number">03 //</span>
+
+            <h2>3 Speed Manual Gearbox</h2>
+
+            <span class="section-meta">ADD TAGS</span>
+
+        </div>
+
+
+
+        <!-- PROJECT DESCRIPTION -- -->
+
+        <div class="project-about">
+
+            <p>Coming soon</p>
+
+        </div>
+
+
+
+        <div class="cnc-grid">
+
+            <!-- SLOT 1 — hero (large, left, 2 rows). Replace src and alt, remove placeholder class -->
+
+            <div class="media-item hero placeholder">
+
+                <span class="slot-icon">🖼</span>
+
+                <span class="slot-label">img src="GB1.gif"</span>
+
+            </div>
+
+            <!-- SLOT 2 — tall (right column, 2 rows). Replace src and alt, remove placeholder class -->
+
+            <div class="media-item tall placeholder">
+
+                <span class="slot-icon">🖼</span>
+
+                <span class="slot-label">img src="GB1.png"</span>
+
+            </div>
+
+            <!-- SLOT 3 — wide (bottom left). Replace src and alt, remove placeholder class -->
+
+            <div class="media-item wide placeholder">
+
+                <span class="slot-icon">🖼</span>
+
+                <span class="slot-label">img src="GB2.gif"</span>
+
+            </div>
+
+            <!-- SLOT 4 — standard (bottom right). Replace src and alt, remove placeholder class -->
+
+            <div class="media-item standard placeholder">
+
+                <span class="slot-icon">🖼</span>
+
+                <span class="slot-label">img src="YOUR_FILE.jpg"</span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Add or remove desc-items as needed -->
+
+        <div class="project-desc">
+
+            <div class="desc-item">
+
+                <span class="desc-label">Topic</span>
+
+                <span class="desc-value">ph</span>
+
+            </div>
+
+            <div class="desc-item">
+
+                <span class="desc-label">Tools</span>
+
+                <span class="desc-value">ph</span>
+
+            </div>
+
+            <div class="desc-item">
+
+                <span class="desc-label">Year</span>
+
+                <span class="desc-value">2024 – 2025</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ══════════════════════════════════════
+
+         Section 04: Filament Dryer
+
+    ══════════════════════════════════════ -->
+
+    <section class="project-section">
+
+        <div class="section-header">
+
+            <span class="section-number">04 //</span>
+
+            <h2>Filament Dryer</h2>
+
+            <span class="section-meta">ADD TAGS</span>
+
+        </div>
+
+
+
+        <!-- PROJECT DESCRIPTION — replace placeholder text with your own -->
+
+        <div class="project-about">
+
+            <p>Coming Soon</p>
+
+        </div>
+
+
+
+        <div class="cnc-grid">
+
+            <!-- SLOT 1 — hero (large, left, 2 rows). Replace src and alt, remove placeholder class -->
+
+            <div class="media-item hero placeholder">
+
+                <span class="slot-icon">🖼</span>
+
+                <span class="slot-label">img src="YOUR_FILE.jpg"</span>
+
+            </div>
+
+            <!-- SLOT 2 — tall (right column, 2 rows). Replace src and alt, remove placeholder class -->
+
+            <div class="media-item tall placeholder">
+
+                <span class="slot-icon">🖼</span>
+
+                <span class="slot-label">img src="YOUR_FILE.jpg"</span>
+
+            </div>
+
+            <!-- SLOT 3 — wide (bottom left). Replace src and alt, remove placeholder class -->
+
+            <div class="media-item wide placeholder">
+
+                <span class="slot-icon">🖼</span>
+
+                <span class="slot-label">img src="YOUR_FILE.jpg"</span>
+
+            </div>
+
+            <!-- SLOT 4 — standard (bottom right). Replace src and alt, remove placeholder class -->
+
+            <div class="media-item standard placeholder">
+
+                <span class="slot-icon">🖼</span>
+
+                <span class="slot-label">img src="YOUR_FILE.jpg"</span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Add or remove desc-items as needed -->
+
+        <div class="project-desc">
+
+            <div class="desc-item">
+
+                <span class="desc-label">Purpose</span>
+
+                <span class="desc-value">ph</span>
+
+            </div>
+
+            <div class="desc-item">
+
+                <span class="desc-label">Design</span>
+
+                <span class="desc-value">ph</span>
+
+            </div>
+
+            <div class="desc-item">
+
+                <span class="desc-label">Material</span>
+
+                <span class="desc-value">ph</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+</div>
+
+
+
+<!-- Lightbox -->
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+
+    <button class="lightbox-close" onclick="closeLightbox()">ESC / close</button>
+
+    <div class="lightbox-inner" id="lightbox-inner"></div>
+
+</div>
+
+
+
+<script>
+
+    function openLightbox(src) {
+
+        const lb = document.getElementById('lightbox');
+
+        const inner = document.getElementById('lightbox-inner');
+
+        inner.innerHTML = `<img src="${src}" alt="">`;
+
+        lb.classList.add('active');
+
+        document.body.style.overflow = 'hidden';
+
+    }
+
+
+
+    function closeLightbox(e) {
+
+        if (e && e.target !== document.getElementById('lightbox') && !e.target.classList.contains('lightbox-close')) return;
+
+        document.getElementById('lightbox').classList.remove('active');
+
+        document.getElementById('lightbox-inner').innerHTML = '';
+
+        document.body.style.overflow = '';
+
+    }
+
+
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox({ target: document.getElementById('lightbox') }); });
+
+</script>
+
+</body>
+
+</html>
